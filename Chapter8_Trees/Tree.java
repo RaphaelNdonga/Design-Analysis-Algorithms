@@ -1,6 +1,6 @@
 package com.designanalysis.Chapter8_Trees;
 
-import com.designanalysis.Position;
+import com.designanalysis.Chapter7_List_Iterator_ADTs.Position;
 
 /**
  * A tree is a non-linear way of storing data. One element does not follow the other in the way arrays do.

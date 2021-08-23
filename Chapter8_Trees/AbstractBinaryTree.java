@@ -1,6 +1,6 @@
 package com.designanalysis.Chapter8_Trees;
 
-import com.designanalysis.Position;
+import com.designanalysis.Chapter7_List_Iterator_ADTs.Position;
 
 import java.util.ArrayList;
 import java.util.List;

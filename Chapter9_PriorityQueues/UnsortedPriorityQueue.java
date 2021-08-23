@@ -1,8 +1,7 @@
 package com.designanalysis.Chapter9_PriorityQueues;
 
-import com.designanalysis.LinkedPositionalList;
-import com.designanalysis.Position;
-import com.designanalysis.PositionalList;
+import com.designanalysis.Chapter7_List_Iterator_ADTs.LinkedPositionalList;
+import com.designanalysis.Chapter7_List_Iterator_ADTs.Position;
 
 import java.util.Comparator;
 
