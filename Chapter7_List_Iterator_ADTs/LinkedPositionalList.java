@@ -1,11 +1,24 @@
-package com.designanalysis;
+package com.designanalysis.Chapter7_List_Iterator_ADTs;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * The only difference between this and the doubly linked list implementation is that this one utilizes
+ * the positional abstraction that is necessary for encapsulation (hiding the unnecessary details from the
+ * user).
+ * The user will know only of the 'Position' but we, the developers, are implementing the 'Node'.
+ * @param <E> Generic type
+ * @author raphael
+ */
 public class LinkedPositionalList<E> implements PositionalList<E> {
     //-------------------------------nested node class----------------------------------------------
     protected static class Node<E> implements Position<E> {
+        @Override
+        public String toString() {
+            return getElement().toString();
+        }
+
         private E element;
         private Node<E> prev;
         private Node<E> next;
@@ -120,7 +133,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
         return new ElementIterator();
     }
 
-    public Node<E> validate(Position<E> p) throws IllegalArgumentException {
+    private Node<E> validate(Position<E> p) throws IllegalArgumentException {
         if (!(p instanceof Node)) {
             throw new IllegalArgumentException("P is not a valid node");
         }
@@ -132,7 +145,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
         return node;
     }
 
-    public Node<E> addBetween(E element, Node<E> predecessor, Node<E> successor) {
+    private Node<E> addBetween(E element, Node<E> predecessor, Node<E> successor) {
         Node<E> newNode = new Node<>(element, predecessor, successor);
         predecessor.setNext(newNode);
         successor.setPrev(newNode);
@@ -165,7 +178,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
     public Position<E> addBefore(Position<E> p, E element) throws IllegalArgumentException {
         Node<E> successor = validate(p);
 
-        return addBetween(element, successor, successor.getNext());
+        return addBetween(element, successor.getPrev(), successor);
     }
 
     @Override
@@ -217,5 +230,11 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
     public Position<E> getAfter(Position<E> p) throws IllegalArgumentException {
         Node<E> currentNode = validate(p);
         return currentNode.getNext();
+    }
+    private Position<E> position(Node<E> node){
+        if(node == header||node == trailer){
+            return null;
+        }
+        return node;
     }
 }

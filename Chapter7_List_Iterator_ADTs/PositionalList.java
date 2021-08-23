@@ -1,4 +1,4 @@
-package com.designanalysis;
+package com.designanalysis.Chapter7_List_Iterator_ADTs;
 
 public interface PositionalList<E> {
     int getSize();
